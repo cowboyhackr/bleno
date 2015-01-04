@@ -62,6 +62,7 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
     console.log('processing write request')
     console.log(receivedData);
   }
+  callback(this.RESULT_SUCCESS);
 };
 
 module.exports = BatteryLevelCharacteristic;
