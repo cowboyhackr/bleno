@@ -54,6 +54,7 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
   }
   else if (data.length !== 1) {
     console.log("data length !== 1");
+    console.log(JSON.stringify(data));
     callback(this.RESULT_INVALID_ATTRIBUTE_LENGTH);
   }
   else {
