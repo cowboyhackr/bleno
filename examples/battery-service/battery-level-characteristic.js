@@ -8,7 +8,7 @@ var util = require('util'),
 var BatteryLevelCharacteristic = function() {
   BatteryLevelCharacteristic.super_.call(this, {
       uuid: '2A19',
-      properties: ['read'],
+      properties: ['read', 'write'],
       descriptors: [
         new Descriptor({
             uuid: '2901',
