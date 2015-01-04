@@ -43,4 +43,18 @@ BatteryLevelCharacteristic.prototype.onReadRequest = function(offset, callback) 
   }
 };
 
+BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, withoutResponse, callback) {
+  if (offset) {
+    callback(this.RESULT_ATTR_NOT_LONG);
+  }
+  else if (data.length !== 1) {
+    callback(this.RESULT_INVALID_ATTRIBUTE_LENGTH);
+  }
+  else {
+    var receivedData = data.readUInt8(0);
+    console.log('processing write request')
+    console.log(receivedData);
+  }
+};
+
 module.exports = BatteryLevelCharacteristic;

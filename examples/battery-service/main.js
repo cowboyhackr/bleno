@@ -8,8 +8,10 @@ bleno.on('stateChange', function(state) {
 
     if (state === 'poweredOn') {
         bleno.startAdvertising('Battery', [primaryService.uuid]);
+        console.log("call to startAdvertising...")
     } else {
         bleno.stopAdvertising();
+        console.log("call to stopAdvertising...")
     }
 });
 
