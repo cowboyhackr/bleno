@@ -26,6 +26,7 @@ util.inherits(BatteryLevelCharacteristic, Characteristic);
 
 BatteryLevelCharacteristic.prototype.onReadRequest = function(offset, callback) {
 
+  console.log("in read");
   if (os.platform() === 'darwin') {
     exec('pmset -g batt', function (error, stdout, stderr) {
 
@@ -39,15 +40,20 @@ BatteryLevelCharacteristic.prototype.onReadRequest = function(offset, callback) 
     });
   } else {
     // return hardcoded value
+    console.log("reading...")
     callback(this.RESULT_SUCCESS, new Buffer([98]));
+
   }
 };
 
 BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, withoutResponse, callback) {
+  console.log("in write");
   if (offset) {
+    console.log("in write - offset");
     callback(this.RESULT_ATTR_NOT_LONG);
   }
   else if (data.length !== 1) {
+    console.log("data length !== 1");
     callback(this.RESULT_INVALID_ATTRIBUTE_LENGTH);
   }
   else {
