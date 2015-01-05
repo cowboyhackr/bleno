@@ -8,7 +8,7 @@ var util = require('util'),
 var BatteryLevelCharacteristic = function() {
   BatteryLevelCharacteristic.super_.call(this, {
       uuid: '2A19',
-      properties: ['read', 'write'],
+      properties: ['read', 'write', 'notify'],
       descriptors: [
         new Descriptor({
             uuid: '2901',
@@ -65,6 +65,10 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
     console.log(receivedData);
   }
   callback(this.RESULT_SUCCESS);
+};
+
+BatteryLevelCharacteristic.prototype.onNotify = function() {
+  console.log('NotifyOnlyCharacteristic on notify');
 };
 
 module.exports = BatteryLevelCharacteristic;
