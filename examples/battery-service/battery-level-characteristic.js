@@ -61,8 +61,11 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
     console.log(JSON.stringify(data));
     console.log('processing write request');
     var receivedData = data.readUInt8(0);
+    console.log(typeof data);
+    console.log(data.toString('ascii'));
     
     console.log(receivedData);
+    console.log(typeof receivedData);
   }
   callback(this.RESULT_SUCCESS);
 };
