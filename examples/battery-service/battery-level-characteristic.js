@@ -58,14 +58,18 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
     //callback(this.RESULT_INVALID_ATTRIBUTE_LENGTH);
   //}
   else {
-    console.log(JSON.stringify(data));
-    console.log('processing write request');
-    var receivedData = data.readUInt8(0);
-    console.log(typeof data);
-    console.log(data.toString('ascii'));
+    // console.log(JSON.stringify(data));
+    // console.log('processing write request');
+    // var receivedData = data.readUInt8(0);
+    // console.log(typeof data);
+    // console.log(data.toString('ascii'));
     
-    console.log(receivedData);
-    console.log(typeof receivedData);
+    // console.log(receivedData);
+    // console.log(typeof receivedData);
+
+    var command = data.toString('ascii');
+    console.log('command');
+    console.log(command);
   }
   callback(this.RESULT_SUCCESS);
 };
