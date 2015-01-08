@@ -2,6 +2,7 @@ var util = require('util'),
   os = require('os'),
   exec = require('child_process').exec,
   bleno = require('bleno'),
+  gpio = require("pi-gpio"),
   Descriptor = bleno.Descriptor,
   Characteristic = bleno.Characteristic;
 
