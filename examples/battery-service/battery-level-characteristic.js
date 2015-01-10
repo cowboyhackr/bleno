@@ -71,16 +71,16 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
     console.log('command');
     console.log(command);
 
-        if(command === 1){
+        if(command === "1"){
       console.log("left");
 
-    }else if(command === 2){
+    }else if(command === "2"){
       console.log("right");
     }
-    else if(command === 3){
+    else if(command === "3"){
       console.log("forward");
     }
-    else if(command === 4){
+    else if(command === "4"){
       console.log("back");
     }
 
