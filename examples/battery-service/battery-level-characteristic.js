@@ -80,7 +80,7 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
           if(err){
             console.log(err);
           }       // Open pin 22 for output
-          gpio.write(22, 0 function() {            // Set pin 22 low (0)
+          gpio.write(22, 0, function() {            // Set pin 22 low (0)
               console.log("set pin 22 low");
             //gpio.close(22);                        // Close pin 22
           });
