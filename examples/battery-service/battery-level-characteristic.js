@@ -50,7 +50,7 @@ BatteryLevelCharacteristic.prototype.onReadRequest = function(offset, callback) 
 BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, withoutResponse, callback) {
   console.log("in write");
   if (offset) {
-    console.log("in write - offset");
+    //console.log("in write - offset");
     callback(this.RESULT_ATTR_NOT_LONG);
   }
   //else if (data.length !== 1) {
@@ -68,7 +68,7 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
     // console.log(receivedData);
     // console.log(typeof receivedData);
         var command = data.toString('ascii');
-    console.log('command');
+    //console.log('command');
     console.log(command);
 
         if(command === "1"){
@@ -85,6 +85,7 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
               console.log(err);
             }       // Open pin 16 for output
             gpio.write(16, 1, function() {            // Set pin 16 high (1)
+                console.log("set pin 16 high");
               gpio.close(16);                        // Close pin 16
             });
 
