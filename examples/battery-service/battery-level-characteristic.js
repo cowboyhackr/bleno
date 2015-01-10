@@ -176,7 +176,7 @@ function setMotorDirection(direction) {
             pin16 = 1;
             pin18 = 0;
             pin22 = 1;
-          }else if direction == 'reverse'{
+          }else if (direction == 'reverse'){
             pin16 = 1;
             pin18 = 0;
             pin22 = 1;
