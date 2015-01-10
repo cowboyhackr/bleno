@@ -67,23 +67,24 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
     
     // console.log(receivedData);
     // console.log(typeof receivedData);
-
-    //     if(command === 1){
-    //   console.log("forward");
-
-    // }else if(command === 2){
-    //   console.log("back");
-    // }
-    // else if(command === 3){
-    //   console.log("left");
-    // }
-    // else if(command === 4){
-    //   console.log("right");
-    // }
-
-    var command = data.toString('ascii');
+        var command = data.toString('ascii');
     console.log('command');
     console.log(command);
+
+        if(command === 1){
+      console.log("left");
+
+    }else if(command === 2){
+      console.log("right");
+    }
+    else if(command === 3){
+      console.log("forward");
+    }
+    else if(command === 4){
+      console.log("back");
+    }
+
+
 
     gpio.open(16, "output", function(err) { 
       if(err){
