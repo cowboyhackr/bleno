@@ -48,7 +48,7 @@ BatteryLevelCharacteristic.prototype.onReadRequest = function(offset, callback) 
 };
 
 BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, withoutResponse, callback) {
-  //console.log("in write");
+  console.log("in write");
   if (offset) {
     console.log("in write - offset");
     callback(this.RESULT_ATTR_NOT_LONG);
@@ -68,7 +68,7 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
     // console.log(receivedData);
     // console.log(typeof receivedData);
         var command = data.toString('ascii');
-    //console.log('command');
+    console.log('command');
     console.log(command);
 
         if(command === "1"){
@@ -79,24 +79,27 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
     }
     else if(command === "3"){
       console.log("forward");
-      gpio.open(16, "output", function(err) { 
-      if(err){
-        console.log(err);
-      }       // Open pin 16 for output
-      gpio.write(16, 1, function() {            // Set pin 16 high (1)
-        gpio.close(16);                        // Close pin 16
-      });
+
+          gpio.open(16, "output", function(err) { 
+            if(err){
+              console.log(err);
+            }       // Open pin 16 for output
+            gpio.write(16, 1, function() {            // Set pin 16 high (1)
+              gpio.close(16);                        // Close pin 16
+            });
+
+            gpio.read(16, function(err, value) {
+              if(err) throw err;
+              console.log(value);    // The current state of the pin
+              });
+          });
     }
     else if(command === "4"){
       console.log("back");
     }
 
 
-    gpio.read(16, function(err, value) {
-    if(err) throw err;
-    console.log(value);    // The current state of the pin
-});
-});
+
   }
   callback(this.RESULT_SUCCESS);
 };
