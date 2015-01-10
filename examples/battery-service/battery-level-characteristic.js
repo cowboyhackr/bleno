@@ -71,7 +71,23 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
     //console.log('command');
     console.log(command);
 
-        if(command === "1"){
+    if(command === "0"){
+      console.log("stop");
+      // print "Now stop"
+      // GPIO.output(Motor1E,GPIO.LOW)
+
+          gpio.open(22, "output", function(err) { 
+          if(err){
+            console.log(err);
+          }       // Open pin 22 for output
+          gpio.write(22, 0 function() {            // Set pin 22 low (0)
+              console.log("set pin 22 low");
+            //gpio.close(22);                        // Close pin 22
+          });
+        });
+
+    }
+    else if(command === "1"){
       console.log("left");
 
     }else if(command === "2"){
@@ -85,7 +101,7 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
               console.log(err);
             }       // Open pin 16 for output
             gpio.write(16, 0, function() {            // Set pin 16 high (1)
-                console.log("set pin 16 high");
+                console.log("set pin 16 low");
               //gpio.close(16);                        // Close pin 16
               //18
               gpio.open(18, "output", function(err) { 
@@ -93,14 +109,14 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
                   console.log(err);
                 }       // Open pin 18 for output
                 gpio.write(18, 1, function() {            // Set pin 18 low (0)
-                    console.log("set pin 16 high");
+                    console.log("set pin 18 high");
                   //gpio.close(18);                        // Close pin 18
                     gpio.open(22, "output", function(err) { 
                           if(err){
                             console.log(err);
                           }       // Open pin 22 for output
                           gpio.write(22, 1, function() {            // Set pin 22 high (1)
-                              console.log("set pin 16 high");
+                              console.log("set pin 22 high");
                             //gpio.close(22);                        // Close pin 22
                           });
                         });
@@ -125,14 +141,14 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
                   console.log(err);
                 }       // Open pin 18 for output
                 gpio.write(18, 0, function() {            // Set pin 18 low (0)
-                    console.log("set pin 16 high");
+                    console.log("set pin 18 low");
                   //gpio.close(18);                        // Close pin 18
                     gpio.open(22, "output", function(err) { 
                           if(err){
                             console.log(err);
                           }       // Open pin 22 for output
                           gpio.write(22, 1, function() {            // Set pin 22 high (1)
-                              console.log("set pin 16 high");
+                              console.log("set pin 22 high");
                             //gpio.close(22);                        // Close pin 22
                           });
                         });
@@ -160,6 +176,7 @@ GPIO.output(Motor1E,GPIO.HIGH)
   }
   callback(this.RESULT_SUCCESS);
 };
+
 
 BatteryLevelCharacteristic.prototype.onNotify = function() {
   console.log('NotifyOnlyCharacteristic on notify');
