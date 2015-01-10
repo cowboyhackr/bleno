@@ -84,6 +84,38 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
             if(err){
               console.log(err);
             }       // Open pin 16 for output
+            gpio.write(16, 0, function() {            // Set pin 16 high (1)
+                console.log("set pin 16 high");
+              //gpio.close(16);                        // Close pin 16
+              //18
+              gpio.open(18, "output", function(err) { 
+                if(err){
+                  console.log(err);
+                }       // Open pin 18 for output
+                gpio.write(18, 1, function() {            // Set pin 18 low (0)
+                    console.log("set pin 16 high");
+                  //gpio.close(18);                        // Close pin 18
+                    gpio.open(22, "output", function(err) { 
+                          if(err){
+                            console.log(err);
+                          }       // Open pin 22 for output
+                          gpio.write(22, 1, function() {            // Set pin 22 high (1)
+                              console.log("set pin 16 high");
+                            //gpio.close(22);                        // Close pin 22
+                          });
+                        });
+                });
+              }); 
+            });
+          });
+
+    }
+    else if(command === "4"){
+      console.log("back");
+                gpio.open(16, "output", function(err) { 
+            if(err){
+              console.log(err);
+            }       // Open pin 16 for output
             gpio.write(16, 1, function() {            // Set pin 16 high (1)
                 console.log("set pin 16 high");
               //gpio.close(16);                        // Close pin 16
@@ -101,64 +133,13 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
                           }       // Open pin 22 for output
                           gpio.write(22, 1, function() {            // Set pin 22 high (1)
                               console.log("set pin 16 high");
-                            //gpio.close(16);                        // Close pin 22
+                            //gpio.close(22);                        // Close pin 22
                           });
                         });
                 });
               }); 
             });
           });
-
-
-          // gpio.open(18, "output", function(err) { 
-          //   if(err){
-          //     console.log(err);
-          //   }       // Open pin 16 for output
-          //   gpio.write(18, 0, function() {            // Set pin 18 low (0)
-          //       console.log("set pin 16 high");
-          //     //gpio.close(16);                        // Close pin 18
-          //   });
-          // });
-
-
-          // gpio.open(22, "output", function(err) { 
-          //   if(err){
-          //     console.log(err);
-          //   }       // Open pin 16 for output
-          //   gpio.write(22, 1, function() {            // Set pin 22 high (1)
-          //       console.log("set pin 16 high");
-          //     //gpio.close(16);                        // Close pin 22
-          //   });
-          // });
-
-
-          // gpio.open(16, "output", function(err) { 
-          //   if(err){
-          //     console.log(err);
-          //   }       // Open pin 16 for output
-          //   gpio.write(16, 1, function() {            // Set pin 16 high (1)
-          //       console.log("set pin 16 high");
-          //     //gpio.close(16);                        // Close pin 16
-          //   });
-
-          //    gpio.write(18, 0, function() {            // Set pin 18 low (0)
-          //       console.log("set pin 18 low");
-          //     //gpio.close(18);                        // Close pin 18
-          //   });
-
-          //   gpio.write(22, 1, function() {            // Set pin 22 high (1)
-          //       console.log("set pin 22 high");
-          //     //gpio.close(22);                        // Close pin 22
-          //   });
-
-          //   gpio.read(16, function(err, value) {
-          //     if(err) throw err;
-          //     console.log(value);    // The current state of the pin
-          //     });
-          // });
-    }
-    else if(command === "4"){
-      console.log("back");
     }
 
 /*
