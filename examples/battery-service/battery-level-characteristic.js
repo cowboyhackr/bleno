@@ -90,14 +90,14 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
             });
 
              gpio.write(18, 0, function() {            // Set pin 18 low (0)
-                console.log("set pin 16 high");
+                console.log("set pin 18 low");
               //gpio.close(18);                        // Close pin 18
             });
 
             gpio.write(22, 1, function() {            // Set pin 22 high (1)
-                console.log("set pin 16 high");
+                console.log("set pin 22 high");
               //gpio.close(22);                        // Close pin 22
-            });ß
+            });
 
             gpio.read(16, function(err, value) {
               if(err) throw err;
