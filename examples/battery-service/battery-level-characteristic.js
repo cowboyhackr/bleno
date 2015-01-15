@@ -7,7 +7,7 @@ var util = require('util'),
   Descriptor = bleno.Descriptor,
   Characteristic = bleno.Characteristic;
 
-    PythonShell.defaultOptions = {
+    pythonShell.defaultOptions = {
       scriptPath: './python'
   };
 
@@ -100,7 +100,7 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
         args: ['value1', 'value2', 'value3']
       };
 
-      PythonShell.run('pwm.py', options, function (err, results) {
+      pythonShell.run('pwm.py', options, function (err, results) {
         if (err) throw err;
           // results is an array consisting of messages collected during execution
         console.log('results: %j', results);
