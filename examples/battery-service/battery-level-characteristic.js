@@ -1,10 +1,15 @@
 var util = require('util'),
   os = require('os'),
+  pythonShell = require('python-shell'),
   exec = require('child_process').exec,
   bleno = require('bleno'),
   gpio = require("pi-gpio"),
   Descriptor = bleno.Descriptor,
   Characteristic = bleno.Characteristic;
+
+    PythonShell.defaultOptions = {
+      scriptPath: './python'
+  };
 
 var BatteryLevelCharacteristic = function() {
   BatteryLevelCharacteristic.super_.call(this, {
@@ -89,6 +94,17 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
     }
     else if(command === "1"){
       console.log("left");
+      var options = {
+        mode: 'text',
+        pythonOptions: ['-u'],
+        args: ['value1', 'value2', 'value3']
+      };
+
+      PythonShell.run('pwm.py', options, function (err, results) {
+        if (err) throw err;
+          // results is an array consisting of messages collected during execution
+        console.log('results: %j', results);
+      });
 
     }else if(command === "2"){
       console.log("right");
