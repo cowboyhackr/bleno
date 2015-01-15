@@ -8,7 +8,7 @@ var util = require('util'),
   Characteristic = bleno.Characteristic;
 
     pythonShell.defaultOptions = {
-      scriptPath: './python'
+      scriptPath: './gpiopython'
   };
 
 var BatteryLevelCharacteristic = function() {
