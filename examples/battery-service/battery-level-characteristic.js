@@ -7,9 +7,7 @@ var util = require('util'),
   Descriptor = bleno.Descriptor,
   Characteristic = bleno.Characteristic;
 
-    pythonShell.defaultOptions = {
-      scriptPath: './gpiopython'
-  };
+
 
 var BatteryLevelCharacteristic = function() {
   BatteryLevelCharacteristic.super_.call(this, {
@@ -97,29 +95,27 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
       // var options = {
       //   args: ['value1', 'value2', 'value3']
       // };
-
-      var pyshell = new pythonShell('pwm.py');
-
-      var output = '';
-      pyshell.stdout.on('data', function (data) {
-        output += ''+data;
-        console.log(output);
-      });
-
-      pyshell.send('hello');
-
-      // pyshell.send('hello2').send('world').end(function (err) {
-      //     if (err) return conole.log(err);
-      //       // output.should.be.exactly('hello\nworld\n');
-      //       // done();
-
-      //     console.log(output);
-      //   });
-
-      pyshell.end(function (err) {
-        if (err) throw err;
-        console.log('finished');
-      });
+      console.log("1.0");
+            pythonShell.defaultOptions = {
+              scriptPath: './gpiopython'
+            };
+      console.log("1.1");
+            var pyshell = new PythonShell('pwm.py', {
+                mode: 'text'
+            });
+      console.log("1.2");
+            var output = '';
+            pyshell.stdout.on('data', function (data) {
+                output += ''+data;
+                console.log("here");
+            });
+      console.log("1.3");
+            pyshell.send('hello').send('world').end(function (err) {
+                if (err) return console.log(err);
+                console.log(output);
+                console.log("here");
+            });
+      console.log("1.4");
 
       // pythonShell.run('pwm.py', options, function (err, results) {
       //   if (err) throw err;
