@@ -100,12 +100,19 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
 
       var pyshell = new pythonShell('pwm.py');
 
+      var output = '';
+      pyshell.stdout.on('data', function (data) {
+        output += ''+data;
+      });
+
       pyshell.send('hello');
 
       pyshell.send('hello2').send('world').end(function (err) {
           if (err) return conole.log(err);
             // output.should.be.exactly('hello\nworld\n');
             // done();
+
+          console.log(output);
         });
 
       // pythonShell.run('pwm.py', options, function (err, results) {
