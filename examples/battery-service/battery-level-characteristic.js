@@ -94,15 +94,25 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
     }
     else if(command === "1"){
       console.log("left");
-      var options = {
-        args: ['value1', 'value2', 'value3']
-      };
+      // var options = {
+      //   args: ['value1', 'value2', 'value3']
+      // };
 
-      pythonShell.run('pwm.py', options, function (err, results) {
-        if (err) throw err;
-          // results is an array consisting of messages collected during execution
-        console.log('results: %j', results);
-      });
+      var pyshell = new PythonShell('pwm.py');
+
+      pyshell.send('hello');
+
+      pyshell.send('hello2').send('world').end(function (err) {
+          if (err) return conole.log(err);
+            // output.should.be.exactly('hello\nworld\n');
+            // done();
+        });
+
+      // pythonShell.run('pwm.py', options, function (err, results) {
+      //   if (err) throw err;
+      //     // results is an array consisting of messages collected during execution
+      //   console.log('results: %j', results);
+      // });
 
     }else if(command === "2"){
       console.log("right");
