@@ -95,8 +95,6 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
     else if(command === "1"){
       console.log("left");
       var options = {
-        mode: 'text',
-        pythonOptions: ['-u'],
         args: ['value1', 'value2', 'value3']
       };
 
