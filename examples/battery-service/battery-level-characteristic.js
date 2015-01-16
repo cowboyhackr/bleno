@@ -96,7 +96,7 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
       //   args: ['value1', 'value2', 'value3']
       // };
       console.log("1.0");
-            pythonShell.defaultOptions = {
+            PythonShell.defaultOptions = {
               scriptPath: './gpiopython'
             };
       console.log("1.1");
