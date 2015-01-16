@@ -1,6 +1,6 @@
 var util = require('util'),
   os = require('os'),
-  pythonShell = require('python-shell'),
+  PythonShell = require('python-shell'),
   exec = require('child_process').exec,
   bleno = require('bleno'),
   gpio = require("pi-gpio"),
