@@ -4,7 +4,11 @@ import time
 
 # simple JSON echo script
 for line in sys.stdin:
-  print line[:-1]
+  if line =='right':
+  	print line[:-1]
+  else:
+  	print 'left'
+
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(22, GPIO.OUT)
