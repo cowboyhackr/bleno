@@ -5,6 +5,7 @@ import time
 direction = 'none'
 # simple JSON echo script
 for line in sys.stdin:
+  print line
   if line =='left':
   	# print line[:-1]
   	print 'left'
