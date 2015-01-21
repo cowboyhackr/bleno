@@ -91,7 +91,7 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
 
     }
     else if(command === "1"){
-      console.log("left");
+      console.log("command left");
       // var options = {
       //   args: ['value1', 'value2', 'value3']
       // };
@@ -119,7 +119,7 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
             pyshell.send('left').end(function (err) {
                 if (err) return console.log(err);
                 console.log(output);
-                console.log("here");
+    
             });
 
       // pythonShell.run('pwm.py', options, function (err, results) {
@@ -129,9 +129,13 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
       // });
 
     }else if(command === "2"){
-      console.log("right");
+      console.log("command right");
       //test function
-      setMotorDirection('forward');
+            pyshell.send('right').end(function (err) {
+                if (err) return console.log(err);
+                console.log(output);
+    
+            });
     }
     else if(command === "3"){
       console.log("forward");
