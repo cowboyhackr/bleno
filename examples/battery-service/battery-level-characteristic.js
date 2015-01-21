@@ -107,7 +107,7 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
             var output = '';
             pyshell.stdout.on('data', function (data) {
                 output += ''+data;
-                console.log("here");
+                console.log(output);
             });
       console.log("1.3");
             // pyshell.send('right').send('left').end(function (err) {
@@ -130,7 +130,22 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
 
     }else if(command === "2"){
       console.log("command right");
-      //test function
+      
+            console.log("1.0");
+            PythonShell.defaultOptions = {
+              scriptPath: './gpiopython'
+            };
+
+            var pyshell = new PythonShell('pwm.py', {
+                mode: 'text'
+            });
+
+            var output = '';
+            pyshell.stdout.on('data', function (data) {
+                output += ''+data;
+                console.log(output);
+            });
+
             pyshell.send('right').end(function (err) {
                 if (err) return console.log(err);
                 console.log(output);
