@@ -6,8 +6,9 @@ direction = 'none'
 # simple JSON echo script
 for line in sys.stdin:
   if line =='left':
-  	print line[:-1]
-  	direction = line[:-1]
+  	# print line[:-1]
+  	print 'left'
+  	direction = 'left'
   else:
   	print 'right'
   	direction = 'right'
