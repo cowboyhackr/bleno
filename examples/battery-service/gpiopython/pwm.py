@@ -12,6 +12,12 @@ for line in sys.stdin:
   	print 'right'
   	direction = 'right'
 
+import fileinput
+for line in fileinput.input():
+	print line
+print 'read done'
+
+
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(22, GPIO.OUT)
@@ -20,9 +26,11 @@ p.start(5)
 
 if direction == 'left':
 	p.ChangeDutyCycle(2.5)
+	print("dutycycle = 2.5")
 
 if direction == 'right':
 	p.ChangeDutyCycle(20.5)
+	print("dutycycle = 20.5")
 
 # try:
 #     while True:
