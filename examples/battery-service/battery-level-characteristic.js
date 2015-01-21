@@ -110,12 +110,17 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
                 console.log("here");
             });
       console.log("1.3");
-            pyshell.send('right').send('left').end(function (err) {
+            // pyshell.send('right').send('left').end(function (err) {
+            //     if (err) return console.log(err);
+            //     console.log(output);
+            //     console.log("here");
+            // });
+      console.log("1.4");
+            pyshell.send('left').end(function (err) {
                 if (err) return console.log(err);
                 console.log(output);
                 console.log("here");
             });
-      console.log("1.4");
 
       // pythonShell.run('pwm.py', options, function (err, results) {
       //   if (err) throw err;
