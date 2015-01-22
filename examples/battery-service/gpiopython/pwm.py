@@ -7,18 +7,9 @@ direction = 'none'
 for line in sys.stdin:
   print line
   if line.strip() =='left':
-  	# print line[:-1]
-  	print 'left'
   	direction = 'left'
   else:
-  	print 'right'
   	direction = 'right'
-
-import fileinput
-for line in fileinput.input():
-	print line
-print 'read done'
-
 
 
 GPIO.setmode(GPIO.BCM)
@@ -33,22 +24,5 @@ if direction == 'left':
 if direction == 'right':
 	p.ChangeDutyCycle(20.5)
 	print("dutycycle = 20.5")
-
-# try:
-#     while True:
-#         p.ChangeDutyCycle(2.5)
-#         time.sleep(1)
-#         p.ChangeDutyCycle(11.5)
-#         time.sleep(1)
-#         p.ChangeDutyCycle(2.5)
-#         time.sleep(1)
-#         p.ChangeDutyCycle(20.5)
-#         time.sleep(1)
-#         p.ChangeDutyCycle(2.5)
-#         time.sleep(1)
-#         print("the tea is soooo hot!")
-# except KeyboardInterrupt:
-#     p.ChangeDutyCycle(0.0)
-#     GPIO.cleanup()
 
 GPIO.cleanup()
