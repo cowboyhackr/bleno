@@ -123,7 +123,6 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
             };
 
             var pyshell = new PythonShell('pwm.py', {
-                mode: 'text'.
                 pythonOptions: '-u'
             });
 
