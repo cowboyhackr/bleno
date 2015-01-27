@@ -22,9 +22,9 @@ if direction == 'left':
 	print("dutycycle = 2.5")
 
 if direction == 'right':
-  p.ChangeDutyCycle(2.5)
+  p.ChangeDutyCycle(20.5)
   time.sleep(1)
-  p.ChangeDutyCycle(11.5)
+  p.ChangeDutyCycle(2.5)
   time.sleep(1)
   # p.ChangeDutyCycle(2.5)
   # time.sleep(1)
