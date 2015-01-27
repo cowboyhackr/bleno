@@ -21,7 +21,8 @@ if direction == 'left':
   p.ChangeDutyCycle(20.5)
   time.sleep(1)
 	p.ChangeDutyCycle(2.5)
-	print("dutycycle = 2.5")
+  time.sleep(1)
+	print("left")
 
 if direction == 'right':
   p.ChangeDutyCycle(20.5)
@@ -34,6 +35,6 @@ if direction == 'right':
   # time.sleep(1)
   # p.ChangeDutyCycle(2.5)
   # time.sleep(1)
-  print("the tea is soooo hot!")
+  print("right")
 
 GPIO.cleanup()
