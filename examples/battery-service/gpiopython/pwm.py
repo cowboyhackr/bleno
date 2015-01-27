@@ -11,7 +11,7 @@ for line in sys.stdin:
   else:
   	direction = 'right'
 
-GPIO.cleanup()
+
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(22, GPIO.OUT)
 p=GPIO.PWM(22,100)
@@ -38,3 +38,4 @@ if direction == 'right':
   print("right end")
 
 GPIO.cleanup()
+time.sleep(1)
