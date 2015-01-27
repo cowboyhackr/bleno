@@ -25,7 +25,7 @@ if direction == 'right':
   print("left end")
 
 if direction == 'left':
-  p.ChangeDutyCycle(2.5)
+  p.ChangeDutyCycle(11.5)
   time.sleep(1)
   #p.ChangeDutyCycle(2.5)
   #time.sleep(1)
