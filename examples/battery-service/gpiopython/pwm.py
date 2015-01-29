@@ -39,5 +39,4 @@ if direction == 'left':
 
 
 GPIO.cleanup(22)
-GPIO.cleanup()
 time.sleep(1)
