@@ -15,7 +15,7 @@ for line in sys.stdin:
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(22, GPIO.OUT)
 p=GPIO.PWM(22,100)
-p.start(5)
+p.start(0)
 
 if direction == 'right':
   p.ChangeDutyCycle(20.5)
@@ -37,5 +37,7 @@ if direction == 'left':
   # time.sleep(1)
   print("right end")
 
+
+GPIO.cleanup(22)
 GPIO.cleanup()
 time.sleep(1)
