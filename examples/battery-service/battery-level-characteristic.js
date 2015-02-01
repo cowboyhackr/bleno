@@ -94,12 +94,13 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
     else if(command === "1"){
       console.log("command left");
 
+            ShinySettings.wheelAngle = ShinySettings.wheelAngle + 1;
             
             PythonShell.defaultOptions = {
               scriptPath: './gpiopython'
             };
 
-            var pyshell = new PythonShell('pwmRelative.py', {
+            var pyshell = new PythonShell('pwm.py', {
                 mode: 'text'
             });
  
@@ -109,16 +110,10 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
                 console.log(output);
             });
 
-            pyshell.send('left').end(function (err) {
-                if (err) return console.log(err);
-                console.log(output);
-    
-            });
-
             console.log("sending " + ShinySettings.wheelAngle.toString() + " to python.");
             pyshell.send(ShinySettings.wheelAngle.toString()).end(function (err) {
                 if (err) return console.log(err);
-                ShinySettings.wheelAngle = ShinySettings.wheelAngle + 1;
+                
                 console.log(output);
     
             });
