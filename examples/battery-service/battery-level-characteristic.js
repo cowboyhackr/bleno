@@ -115,6 +115,7 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
     
             });
 
+            console.log("sending " + ShinySettings.wheelAngle.toString() " to python.");
             pyshell.send(ShinySettings.wheelAngle.toString()).end(function (err) {
                 if (err) return console.log(err);
                 console.log(output);
