@@ -100,7 +100,7 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
               scriptPath: './gpiopython'
             };
 
-            var pyshell = new PythonShell('pwm.py', {
+            var pyshell = new PythonShell('pwmRelative.py', {
                 mode: 'text'
             });
  
