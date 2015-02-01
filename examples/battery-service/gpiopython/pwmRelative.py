@@ -11,6 +11,7 @@ for line in sys.stdin:
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(22, GPIO.OUT)
 p=GPIO.PWM(22,100)
+p.start(0)
 
 
 p.ChangeDutyCycle(int(line))
