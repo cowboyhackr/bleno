@@ -5,7 +5,8 @@ var util = require('util'),
   bleno = require('bleno'),
   gpio = require("pi-gpio"),
   Descriptor = bleno.Descriptor,
-  Characteristic = bleno.Characteristic;
+  Characteristic = bleno.Characteristic,
+  ShinySettings = require('shiny.js');
 
 
 
@@ -93,11 +94,12 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
     else if(command === "1"){
       console.log("command left");
 
+            
             PythonShell.defaultOptions = {
               scriptPath: './gpiopython'
             };
 
-            var pyshell = new PythonShell('pwm.py', {
+            var pyshell = new PythonShell('pwmRelative.py', {
                 mode: 'text'
             });
  
@@ -112,6 +114,15 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
                 console.log(output);
     
             });
+
+            pyshell.send(ShinySettings.wheelAngle.toString()).end(function (err) {
+                if (err) return console.log(err);
+                ShinySettings.wheelAngle = output;
+                console.log(output);
+    
+            });
+
+            ShinySettings.wheelAngle = ShinySettings.wheelAngle + 1;
 
 
     }else if(command === "2"){
