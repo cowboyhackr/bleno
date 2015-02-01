@@ -6,7 +6,7 @@ var util = require('util'),
   gpio = require("pi-gpio"),
   Descriptor = bleno.Descriptor,
   Characteristic = bleno.Characteristic,
-  ShinySettings = require('./ShinySettings');
+  ShinySettings = require('./shiny');
 
 
 
@@ -117,7 +117,6 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
 
             pyshell.send(ShinySettings.wheelAngle.toString()).end(function (err) {
                 if (err) return console.log(err);
-                ShinySettings.wheelAngle = output;
                 console.log(output);
     
             });
