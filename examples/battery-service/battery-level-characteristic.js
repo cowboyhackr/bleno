@@ -94,7 +94,13 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
     else if(command === "1"){
       console.log("command left");
 
-            ShinySettings.wheelAngle = ShinySettings.wheelAngle - .5;
+            ShinySettings.wheelAngle = ShinySettings.wheelAngle - 1.5;
+
+            if(ShinySettings.wheelAngle < 1){
+              console.log("left limit exceeded.")
+              ShinySettings.wheelAngle = 1;
+              return;
+            }
             
             PythonShell.defaultOptions = {
               scriptPath: './gpiopython'
@@ -124,7 +130,13 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
     }else if(command === "2"){
       console.log("command right");
       
-            ShinySettings.wheelAngle = ShinySettings.wheelAngle + .5;
+            ShinySettings.wheelAngle = ShinySettings.wheelAngle + 1.5;
+
+            if(ShinySettings.wheelAngle > 23){
+              console.log("right limit exceeded.")
+              ShinySettings.wheelAngle = 22.5;
+              return;
+            }
 
             PythonShell.defaultOptions = {
               scriptPath: './gpiopython'
