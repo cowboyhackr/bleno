@@ -94,7 +94,7 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
     else if(command === "1"){
       console.log("command left");
 
-            ShinySettings.wheelAngle = ShinySettings.wheelAngle - 5;
+            ShinySettings.wheelAngle = ShinySettings.wheelAngle - .5;
             
             PythonShell.defaultOptions = {
               scriptPath: './gpiopython'
@@ -124,7 +124,7 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
     }else if(command === "2"){
       console.log("command right");
       
-            ShinySettings.wheelAngle = ShinySettings.wheelAngle + 5;
+            ShinySettings.wheelAngle = ShinySettings.wheelAngle + .5;
 
             PythonShell.defaultOptions = {
               scriptPath: './gpiopython'

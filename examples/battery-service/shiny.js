@@ -1,4 +1,4 @@
-var ShinySettings = { wheelAngle : 50 }
+var ShinySettings = { wheelAngle : 10}
 
 
 
