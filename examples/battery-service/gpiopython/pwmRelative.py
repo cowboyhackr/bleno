@@ -14,7 +14,7 @@ p=GPIO.PWM(22,100)
 p.start(0)
 
 
-p.ChangeDutyCycle(int(line))
+p.ChangeDutyCycle(float(line))
 time.sleep(1)
 print(line)
 
