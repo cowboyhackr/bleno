@@ -99,30 +99,31 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
             if(ShinySettings.wheelAngle < 1){
               console.log("left limit exceeded.")
               ShinySettings.wheelAngle = 1;
-              return;
-            }
+        
+            }else{
             
-            PythonShell.defaultOptions = {
-              scriptPath: './gpiopython'
-            };
+              PythonShell.defaultOptions = {
+                scriptPath: './gpiopython'
+              };
 
-            var pyshell = new PythonShell('pwmRelative.py', {
-                mode: 'text'
-            });
- 
-            var output = '';
-            pyshell.stdout.on('data', function (data) {
-                output += ''+data;
-                console.log(output);
-            });
+              var pyshell = new PythonShell('pwmRelative.py', {
+                  mode: 'text'
+              });
+   
+              var output = '';
+              pyshell.stdout.on('data', function (data) {
+                  output += ''+data;
+                  console.log(output);
+              });
 
-            console.log("sending " + ShinySettings.wheelAngle.toString() + " to python.");
-            pyshell.send(ShinySettings.wheelAngle.toString()).end(function (err) {
-                if (err) return console.log(err);
-                
-                console.log(output);
-    
-            });
+              console.log("sending " + ShinySettings.wheelAngle.toString() + " to python.");
+              pyshell.send(ShinySettings.wheelAngle.toString()).end(function (err) {
+                  if (err) return console.log(err);
+                  
+                  console.log(output);
+      
+              });
+          }
 
             
 
@@ -135,29 +136,30 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
             if(ShinySettings.wheelAngle > 23){
               console.log("right limit exceeded.")
               ShinySettings.wheelAngle = 22.5;
-              return;
-            }
+ 
+            }else{
 
-            PythonShell.defaultOptions = {
-              scriptPath: './gpiopython'
-            };
+              PythonShell.defaultOptions = {
+                scriptPath: './gpiopython'
+              };
 
-            var pyshell = new PythonShell('pwm.py', {
-                pythonOptions: '-u'
-            });
+              var pyshell = new PythonShell('pwm.py', {
+                  pythonOptions: '-u'
+              });
 
-            var output = '';
-            pyshell.stdout.on('data', function (data) {
-                output += ''+data;
-                console.log(output);
-            });
+              var output = '';
+              pyshell.stdout.on('data', function (data) {
+                  output += ''+data;
+                  console.log(output);
+              });
 
-            console.log("sending " + ShinySettings.wheelAngle.toString() + " to python.");
-            pyshell.send(ShinySettings.wheelAngle.toString()).end(function (err) {
-                if (err) return console.log(err);
-                console.log(output);
-    
-            });
+              console.log("sending " + ShinySettings.wheelAngle.toString() + " to python.");
+              pyshell.send(ShinySettings.wheelAngle.toString()).end(function (err) {
+                  if (err) return console.log(err);
+                  console.log(output);
+      
+              });
+          }
     }
     else if(command === "3"){
       console.log("forward");
