@@ -280,10 +280,11 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
                 });
               }); 
             });
-          }
+      
 
+      });
+    }
   }
-}
   callback(this.RESULT_SUCCESS);
 };
 
