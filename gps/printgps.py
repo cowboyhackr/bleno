@@ -9,6 +9,7 @@ session.stream(gps.WATCH_ENABLE | gps.WATCH_NEWSTYLE)
 while True:
     try:
     	report = session.next()
+        print report
 		# Wait for a 'TPV' report and display the current time
 		# To see all report data, uncomment the line below
 		# print report
