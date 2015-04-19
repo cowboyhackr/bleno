@@ -18,6 +18,9 @@ while True:
                 print report.time
                 print report.lat 
                 print report.lon
+        else
+            print ' no tpv?'
+            print report
     except KeyError:
 		pass
     except KeyboardInterrupt:
