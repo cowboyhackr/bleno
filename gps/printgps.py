@@ -14,8 +14,10 @@ while True:
 		# print report
         if report['class'] == 'TPV':
             if hasattr(report, 'time'):
+                print ' '
                 print report.time
-                print report
+                print report.lat 
+                print report.lon
     except KeyError:
 		pass
     except KeyboardInterrupt:
