@@ -118,7 +118,7 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
           });
 
     }
-    else if(command === "1"){
+    else if(command === "2"){
       console.log("command left");
 
 
@@ -161,7 +161,7 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
             
 
 
-    }else if(command === "2"){
+    }else if(command === "1"){
       console.log("command right");
       
             gpio.open(16, "output", function(err) { 
@@ -201,7 +201,7 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
             });
           });
     }
-    else if(command === "3"){
+    else if(command === "4"){
       console.log("forward");
 
           gpio.open(16, "output", function(err) { 
@@ -242,7 +242,7 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
           });
 
     }
-    else if(command === "4"){
+    else if(command === "3"){
       console.log("back");
 
           gpio.open(16, "output", function(err) { 
