@@ -142,6 +142,7 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
                                   // }       
                                   gpio.write(15, 1, function() {            
                                       console.log("set pin 15 low");
+                                      setTimeout(stop(),500);  
                                                  
                                   });
                                 });                     
