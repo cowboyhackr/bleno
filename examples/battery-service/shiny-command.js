@@ -57,28 +57,16 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
     //console.log("in write - offset");
     callback(this.RESULT_ATTR_NOT_LONG);
   }
-  //else if (data.length !== 1) {
-   // console.log("data length !== 1");
-    //console.log(JSON.stringify(data));
-    //callback(this.RESULT_INVALID_ATTRIBUTE_LENGTH);
-  //}
+
   else {
-    // console.log(JSON.stringify(data));
-    // console.log('processing write request');
-    // var receivedData = data.readUInt8(0);
-    // console.log(typeof data);
-    // console.log(data.toString('ascii'));
-    
-    // console.log(receivedData);
-    // console.log(typeof receivedData);
+ 
         var command = data.toString('ascii');
     //console.log('command');
     console.log(command);
 
     if(command === "0"){
       console.log("stop");
-      // print "Now stop"
-      // GPIO.output(Motor1E,GPIO.LOW)
+
 
            stop();
 
@@ -113,7 +101,7 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
                                   // }       
                                   gpio.write(15, 0, function() {            
                                       console.log("set pin 15 low");
-                                    //setTimeout(stop(),500);                         
+                                      setTimeout(stop(),500);                         
                                   });
                                 });                     
                           });
