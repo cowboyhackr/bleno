@@ -149,7 +149,7 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
                                   }       // Open pin 22 for output
                                   gpio.write(15, 0, function() {            
                                       console.log("set pin 15 low");
-                                    //gpio.close(22);                        
+                                    setTimeout(stop(),500);                         
                                   });
                                 });                     
                           });
@@ -191,7 +191,7 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
                                   }       // Open pin 22 for output
                                   gpio.write(15, 1, function() {            
                                       console.log("set pin 15 low");
-                                    //gpio.close(22);                        
+                                    setTimeout(stop(),500);                    
                                   });
                                 });                     
                           });
@@ -272,7 +272,8 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
                                   }       // Open pin 22 for output
                                   gpio.write(15, 1, function() {            
                                       console.log("set pin 15 high");
-                                    //gpio.close(22);                        
+                                  
+                                  stop();                     
                                   });
                                 });                     
                           });
@@ -287,6 +288,46 @@ BatteryLevelCharacteristic.prototype.onWriteRequest = function(data, offset, wit
   }
   callback(this.RESULT_SUCCESS);
 };
+
+function stop(){
+
+           gpio.open(16, "output", function(err) { 
+            if(err){
+              console.log(err);
+            }       // Open pin 16 for output
+            gpio.write(16, 0, function() {           
+                console.log("set pin 16 high");
+              //gpio.close(16);                       
+              //18
+              gpio.open(18, "output", function(err) { 
+                if(err){
+                  console.log(err);
+                }       // Open pin 18 for output
+                gpio.write(18, 0, function() {            
+                    console.log("set pin 18 low");
+                  //gpio.close(18);                        
+                    gpio.open(13, "output", function(err) { 
+                          if(err){
+                            console.log(err);
+                          }       // Open pin 22 for output
+                          gpio.write(13, 0, function() {            
+                              console.log("set pin 13 high");
+                              gpio.open(15, "output", function(err) { 
+                                  if(err){
+                                    console.log(err);
+                                  }       // Open pin 22 for output
+                                  gpio.write(15, 0, function() {            
+                                      console.log("set pin 15 low");
+                                    //gpio.close(22);                        
+                                  });
+                                });                     
+                          });
+                        });
+                });
+              }); 
+            });
+          });
+}
 
 function setMotorDirection(direction) {
     console.log('Setting: ' + direction);    
